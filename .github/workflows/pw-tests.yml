@@ -27,13 +27,13 @@ jobs:
         PLAYWRIGHT_VERSION=$(node -e "const fs = require('fs'); const packageLock = JSON.parse(fs.readFileSync('./package-lock.json', 'utf8')); console.log(packageLock.packages[''].devDependencies['@playwright/test']);")
         echo "PLAYWRIGHT_VERSION=$PLAYWRIGHT_VERSION" >> $GITHUB_ENV
         echo $PLAYWRIGHT_VERSION
-     - name: Cache dependencies
+     - name: Cache node_modules
        uses: actions/cache@v4
        id: node-cache
        with: 
          path: |
            node_modules
-           key: node_modules
+         key: node_modules
      - name: Cache playwright binaries
        uses: actions/cache@v4
        id: playwright-cache
