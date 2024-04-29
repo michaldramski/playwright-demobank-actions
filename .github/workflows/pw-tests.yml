@@ -24,9 +24,8 @@ jobs:
      - name: Get installed Playwright version
        id: playwright-version
        env:
-        PLAYWRIGHT_VERSION: ""
-       run: |
-        echo "PLAYWRIGHT_VERSION=$(node -e "console.log(require('./package-lock.json').dependencies['@playwright/test'].version)")" >> $GITHUB_ENV
+        PLAYWRIGHT_VERSION: ""       
+       run: echo "PLAYWRIGHT_VERSION=$(node -e \"console.log(require('./package-lock.json').devDependencies['@playwright/test'].version)\")" >> $GITHUB_ENV
      - name: Cache playwright binaries
        uses: actions/cache@v4
        id: playwright-cache
