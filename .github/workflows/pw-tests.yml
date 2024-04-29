@@ -24,7 +24,7 @@ jobs:
      - name: Get installed Playwright version
        id: playwright-version    
        run: |
-        PLAYWRIGHT_VERSION=$(node -e "const fs = require('fs'); const packageLock = JSON.parse(fs.readFileSync('./package-lock.json', 'utf8')); console.log(packageLock.devDependencies['@playwright/test']);")
+        PLAYWRIGHT_VERSION=$(node -e "const fs = require('fs'); const packageLock = JSON.parse(fs.readFileSync('./package-lock.json', 'utf8')); console.log(packageLock.packages[''].devDependencies['@playwright/test']);")
         echo "PLAYWRIGHT_VERSION=$PLAYWRIGHT_VERSION" >> $GITHUB_ENV
         echo $PLAYWRIGHT_VERSION
      - name: Cache playwright binaries
